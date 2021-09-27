@@ -1,32 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 
-namespace Election1
+using System.Threading;
+
+
+namespace Unlock_Pattern
+
 {
+
     class Program
+
+public class unlockpattern
     {
-        private static object dictionary;
-        private static object input;
 
-        static void Main(string[] args)
+        public static void main(String[] args)
         {
-            // Declare dictionary for candiate and votes
-            var cans = new Dictionary<string, string>();
-            var votes = new Dictionary<string, int>();
-
-            int x = Int32.Parse(Console.ReadLine());
-
-            for (int i = 0; i < x; i++)
+            Scanner sc = new Scanner(System.in);
+            int[,] arr = new int[3];
+            3;
+            int[] f = new int[2];
+            for (int r = 0; (r < 3); r++)
             {
-                cans.Add(Console.ReadLine(), Console.ReadLine());
+                for (int c = 0; (c < 3); c++)
+                {
+                    arr[r][c] = sc.nextInt();
+                    if ((arr[r][c] == 1))
+                    {
+                        f[0] = r;
+                        f[1] = c;
+                    }
+
+                }
+
             }
 
-            int voteNum = Int32.Parse(Console.ReadLine());
+            double dist = 0;
+            for (int x = 1; (x < 9); x++)
+            {
+                int[] s = new int[2];
+                for (int r = 0; (r < 3); r++)
+                {
+                    for (int c = 0; (c < 3); c++)
+                    {
+                        if ((arr[r][c]
+                                    == (x + 1)))
+                        {
+                            s[0] = r;
+                            s[1] = c;
+                        }
 
-       
+                    }
+
+                }
+
+                dist = (dist + Math.sqrt((Math.pow((s[0] - f[0]), 2) + Math.pow((s[1] - f[1]), 2))));
+                f = s;
+            }
+
+            System.out.println(dist);
+        }
     }
-}
-
-               
