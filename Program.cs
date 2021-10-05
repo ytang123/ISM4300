@@ -1,61 +1,39 @@
 ﻿using System;
 
-using System.Threading;
-
-
-namespace Unlock_Pattern
-
+namespace From_A_to_B
 {
-
     class Program
-
-public class unlockpattern
     {
-
-        public static void main(String[] args)
+        static void Main(string[] args)
         {
-            Scanner sc = new Scanner(System.in);
-            int[,] arr = new int[3];
-            3;
-            int[] f = new int[2];
-            for (int r = 0; (r < 3); r++)
-            {
-                for (int c = 0; (c < 3); c++)
-                {
-                    arr[r][c] = sc.nextInt();
-                    if ((arr[r][c] == 1))
-                    {
-                        f[0] = r;
-                        f[1] = c;
-                    }
+            // Reads the line and split by whitespace into an array of strings
+            string[] AB = Console.ReadLine().Split();
 
+            int A = int.Parse(AB[0]);
+            int B = int.Parse(AB[1]);
+            int count = 0;
+
+            while (A > B)
+            {
+                if (A % 2 == 0)
+                {
+                    A /= 2;
+                    count += 1;
                 }
 
-            }
-
-            double dist = 0;
-            for (int x = 1; (x < 9); x++)
-            {
-                int[] s = new int[2];
-                for (int r = 0; (r < 3); r++)
+                else
                 {
-                    for (int c = 0; (c < 3); c++)
-                    {
-                        if ((arr[r][c]
-                                    == (x + 1)))
-                        {
-                            s[0] = r;
-                            s[1] = c;
-                        }
-
-                    }
-
+                    A += 1;
+                    count += 1;
                 }
-
-                dist = (dist + Math.sqrt((Math.pow((s[0] - f[0]), 2) + Math.pow((s[1] - f[1]), 2))));
-                f = s;
             }
 
-            System.out.println(dist);
+            if (A < B)
+            {
+                count += B - A;
+            }
+
+            Console.WriteLine(count);
         }
     }
+}
