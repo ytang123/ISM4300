@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace From_A_to_B
 {
@@ -6,34 +6,39 @@ namespace From_A_to_B
     {
         static void Main(string[] args)
         {
-            // Reads the line and split by whitespace into an array of strings
-            string[] AB = Console.ReadLine().Split();
+            string[] input = Console.ReadLine().Split();
+            int a = int.Parse(input[0]);
+            int b = int.Parse(input[1]);
 
-            int A = int.Parse(AB[0]);
-            int B = int.Parse(AB[1]);
-            int count = 0;
+            // int a = int.Parse(Console.ReadLine());
+            // int b = int.Parse(Console.ReadLine());
+            int counter = 0;
+            while( a != b){
 
-            while (A > B)
-            {
-                if (A % 2 == 0)
-                {
-                    A /= 2;
-                    count += 1;
+                if(a > b){
+                    while(a > b){
+                        if(a % 2 ==0){
+                            a = a / 2;
+                            counter++;
+                        }
+                        else{
+                            a++;
+                            counter++;
+                        }
+                    }
                 }
-
-                else
-                {
-                    A += 1;
-                    count += 1;
+                else{
+                    // while(a < b){
+                    //     a++;
+                    //     counter++;
+                    // }
+                    break;
                 }
             }
-
-            if (A < B)
-            {
-                count += B - A;
+            if(a < b){
+                counter += b - a;
             }
-
-            Console.WriteLine(count);
+            Console.WriteLine(counter);
         }
     }
 }
